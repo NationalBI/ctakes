@@ -92,10 +92,11 @@ final public class JdbcRareWordDictionary extends AbstractRareWordDictionary {
          connected = connection != null;
          _selectTermCall = createSelectCall( connection, tableName );
       } catch ( SQLException sqlE ) {
+         String desc = "dictionary " + name + " at " +jdbcUrl + " as user " + jdbcUser;
          if ( !connected ) {
-            LOGGER.error( "Could not Connect to Dictionary " + name );
+            LOGGER.error( "Could not connect to " + desc );
          } else {
-            LOGGER.error( "Could not create Term Data Selection Call", sqlE );
+            LOGGER.error( "Could not create Term Data Selection Call for " + desc, sqlE );
          }
          throw sqlE;
       }

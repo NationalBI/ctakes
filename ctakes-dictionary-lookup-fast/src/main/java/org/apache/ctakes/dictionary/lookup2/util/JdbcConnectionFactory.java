@@ -65,6 +65,7 @@ public enum JdbcConnectionFactory {
          // Hack for hsqldb file needing to be absolute or relative to current working directory
 //         trueJdbcUrl = HSQL_FILE_PREFIX + getConnectionUrl( jdbcUrl );
          trueJdbcUrl = HSQL_PREFIX + getConnectionUrl( jdbcUrl );
+         LOGGER.info("Using JDBC URL " + trueJdbcUrl + " instead of " + jdbcUrl);
       }
       try {
          // DO NOT use try with resources here.

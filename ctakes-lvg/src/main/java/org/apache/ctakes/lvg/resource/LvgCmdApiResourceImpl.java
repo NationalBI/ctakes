@@ -94,6 +94,10 @@ public class LvgCmdApiResourceImpl
 	        lvgLexItem = new LvgLexItemApi("-f:i -SC", configFileName);
 
     	}
+		catch (Exception err) {
+			logger.error("Failed to load LVG config file from URI " + dr.getUri(), err);
+			throw err;
+		}
     	finally {
     		// try to change the current working directory back to what it was
 			if (cwd!=null) {
