@@ -4,7 +4,10 @@ import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -63,8 +66,7 @@ public enum JdbcConnectionFactory {
       String trueJdbcUrl = jdbcUrl;
       if ( jdbcUrl.startsWith( HSQL_FILE_PREFIX ) ) {
          // Hack for hsqldb file needing to be absolute or relative to current working directory
-//         trueJdbcUrl = HSQL_FILE_PREFIX + getConnectionUrl( jdbcUrl );
-         trueJdbcUrl = HSQL_PREFIX + getConnectionUrl( jdbcUrl );
+         trueJdbcUrl = HSQL_PREFIX + resolveDatabasePath( jdbcUrl );
          LOGGER.info("Using JDBC URL " + trueJdbcUrl + " instead of " + jdbcUrl);
       }
       try {
@@ -107,15 +109,17 @@ public enum JdbcConnectionFactory {
     * @return -
     * @throws SQLException
     */
-   static private String getConnectionUrl( final String jdbcUrl ) throws SQLException {
+   static private String resolveDatabasePath( final String jdbcUrl ) throws SQLException {
       final String urlDbPath = jdbcUrl.substring( HSQL_FILE_PREFIX.length() );
       final String urlFilePath = urlDbPath + HSQL_DB_EXT;
       try {
          final URL url = FileLocator.getResource( urlFilePath );
-         final String urlString = url.toExternalForm();
+         final String urlString = Paths.get(url.toURI()).toRealPath().toString();
          return urlString.substring( 0, urlString.length() - HSQL_DB_EXT.length() );
       } catch ( FileNotFoundException fnfE ) {
          throw new SQLException( "No Hsql DB exists at Url", fnfE );
+      } catch ( IOException | URISyntaxException err ) {
+         throw new SQLException( "Failed to resolve Hsql DB at " + urlFilePath, err );
       }
    }
 
