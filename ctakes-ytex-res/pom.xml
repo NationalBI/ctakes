@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>org.apache.ctakes</groupId>
 		<artifactId>ctakes</artifactId>
-		<version>4.0.1-SNAPSHOT</version>
+		<version>4.0.99-SNAPSHOT</version>
 	</parent>
 	<artifactId>ctakes-ytex-res</artifactId>
 	<name>Apache cTAKES Resources ctakes-ytex-res</name>
