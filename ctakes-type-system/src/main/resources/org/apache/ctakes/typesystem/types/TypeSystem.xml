@@ -209,6 +209,24 @@ Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.PunctuationToken</description>
       <supertypeName>org.apache.ctakes.typesystem.type.syntax.BaseToken</supertypeName>
     </typeDescription>
     <typeDescription>
+      <name>org.apache.ctakes.typesystem.type.textspan.SectionHeading</name>
+      <description>The heading of a section. This is populated by CDASegmentAnnotator along with the corresponding org.apache.ctakes.typesystem.type.textspan.Segment.
+In other words, the Segment covers the entire section, and the SectionHeading covers just the heading (usually the first line).</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>id</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>preferredText</name>
+          <description>preferredText is the normalized/resolved section name.  Normally, this is populated by the Sectionizer and would contain the HL7/CCDA section name.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
       <name>org.apache.ctakes.typesystem.type.textspan.Segment</name>
       <description>A section of a clinical text, e.g., Diagnosis, Current Medications, Problem List.  Different segments often have differing sublanguages and clinical relevance.     
 Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.Segment</description>
@@ -760,7 +778,7 @@ More qualifying information on how the procedure was done.</description>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-      <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+      <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
       <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
       <features>
         <featureDescription>
@@ -2545,7 +2563,7 @@ More qualifying information on how the procedure was done.</description>
     </typeDescription>
     <typeDescription>
       <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-      <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+      <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
       <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
       <features>
         <featureDescription>

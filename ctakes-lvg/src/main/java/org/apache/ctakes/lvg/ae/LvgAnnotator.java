@@ -607,8 +607,12 @@ public class LvgAnnotator extends JCasAnnotator_ImplBase {
 	};
 	
 	for (String path:filesToCopy) {
-		InputStream stream =  LvgAnnotator.class.getClassLoader().getResourceAsStream(prefix+path);
-		
+		String fullPath = prefix + path;
+		InputStream stream =  LvgAnnotator.class.getClassLoader().getResourceAsStream(fullPath);
+		if (stream == null) {
+			throw new RuntimeException("No such LVG resource " + fullPath);
+		}
+
 		File file = new File(absolutePath, path);
 		Logger logger = Logger.getLogger(LvgAnnotator.class.getName());
 		logger.info("Copying lvg-related file to " + file.getAbsolutePath());

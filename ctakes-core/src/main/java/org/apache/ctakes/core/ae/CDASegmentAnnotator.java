@@ -22,6 +22,7 @@ package org.apache.ctakes.core.ae;
 import org.apache.ctakes.core.pipeline.PipeBitInfo;
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.core.util.DocumentIDAnnotationUtil;
+import org.apache.ctakes.typesystem.type.textspan.SectionHeading;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
 import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
@@ -133,8 +134,16 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 		return p;
 	}
 
+	private final Segment createSegment(JCas jCas, int begin, int end, String id) {
+		Segment segment = new Segment(jCas);
+		segment.setBegin(begin);
+		segment.setEnd(end);
+		segment.setId(id);
+		return segment;
+	}
+
 	@Override
-  public void process(JCas jCas) throws AnalysisEngineProcessException {
+	public void process(JCas jCas) throws AnalysisEngineProcessException {
 		String text = jCas.getDocumentText();
 		if (text == null) {
 			String docId = DocumentIDAnnotationUtil.getDocumentID(jCas);
@@ -146,64 +155,87 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 				// System.out.println("Pattern" + p);
 				Matcher m = p.matcher(text);
 				while (m.find()) {
-					Segment segment = new Segment(jCas);
-					segment.setBegin(m.start());
-					segment.setEnd(m.end());
-					segment.setId(id);					
+					Segment segment = createSegment(jCas, m.start(), m.end(), id);
 					sorted_segments.add(segment);
 				}
 			}
-			// If there are non segments, create a simple one that spans the
-			// entire doc
+
+			// If there are no segments, create a simple one that spans the
+			// entire doc, and return.
 			if (sorted_segments.size() <= 0) {
-				Segment header = new Segment(jCas);
-				header.setBegin(0);
-				header.setEnd(text.length());
-				header.setId(SIMPLE_SEGMENT);
-				sorted_segments.add(header);
-			}			
-			// TODO: this is kinda redundant, but needed the sections in sorted
-			// Order to determine the end of section which is assumed to be the
-			// beginning of the next section
+				Segment header = createSegment(jCas, 0, text.length(), SIMPLE_SEGMENT);
+				header.addToIndexes();
+				return;
+			}
+
+			// The sections must be sorted because the end of each section is implied by the
+			// beginning of the following section (or the end of the document).
 			Collections.sort(sorted_segments, new Comparator<Segment>() {
 				public int compare(Segment s1, Segment s2) {
 					return s1.getBegin() - (s2.getBegin());
 				}
 			});
 			int index = 0;
+			int sorted_segments_size = sorted_segments.size();
 			for (Segment s : sorted_segments) {
-				int prevEnd = s.getEnd();
-				int nextBegin = text.length();
-				if (index > 0) {
-					// handle case for first section
-					sorted_segments.get(index - 1).getEnd();
+				int sectionHeadingBegin = s.getBegin();
+				int sectionHeadingEnd = s.getEnd();
+				int sectionBodyBegin = sectionHeadingEnd;
+				int sectionBodyEnd;
+				if (index < sorted_segments_size - 1) {
+					sectionBodyEnd = sorted_segments.get(index + 1).getBegin();
 				}
-				if (index + 1 < sorted_segments.size()) {
+				else {
 					// handle case for last section
-					nextBegin = sorted_segments.get(index + 1).getBegin();
+					sectionBodyEnd = text.length();
 				}
+
+				// Pull the section ends inwards to avoid any whitespace at either end.
+				// This means that we'll just be tagging the actual text that we care about
+				// and not the separating whitespace.
+				sectionHeadingBegin = skipWhitespaceAtBeginning(text, sectionHeadingBegin, sectionHeadingEnd);
+				sectionHeadingEnd = skipWhitespaceAtEnd(text, sectionHeadingBegin, sectionHeadingEnd);
+				sectionBodyBegin = skipWhitespaceAtBeginning(text, sectionBodyBegin, sectionBodyEnd);
+				sectionBodyEnd = skipWhitespaceAtEnd(text, sectionBodyBegin, sectionBodyEnd);
+
 				// Only create a segment if there is some text.
-				// Handle the case where it's an empty segement
-				if (nextBegin > prevEnd) {
+				// Simply skip empty sections.
+				if (sectionBodyEnd > sectionBodyBegin + 1) {
+					String sId = s.getId();
+					String preferredText = section_names.get(sId);
+
 					Segment segment = new Segment(jCas);
-					segment.setBegin(prevEnd);
-					segment.setEnd(nextBegin);
-					segment.setId(s.getId());
+					segment.setBegin(sectionBodyBegin);
+					segment.setEnd(sectionBodyEnd);
+					segment.setId(sId);
+					segment.setPreferredText(preferredText);
 					segment.addToIndexes();
-					segment.setPreferredText(section_names.get(s.getId()));					
-					index++;
+
+					SectionHeading heading = new SectionHeading(jCas);
+					heading.setBegin(sectionHeadingBegin);
+					heading.setEnd(sectionHeadingEnd);
+					heading.setId(sId);
+					heading.setPreferredText(preferredText);
+					heading.addToIndexes();
+
 				}
-				// handle case where there is only a single SIMPLE_SEGMENT
-				else if (nextBegin == prevEnd && nextBegin > 0 && index == 0) {
-					Segment segment = new Segment(jCas);
-					segment.setBegin(0);
-					segment.setEnd(nextBegin);
-					segment.setId(s.getId());
-					segment.addToIndexes();
-					index++;
-				}
-			}	
+				index++;
+			}
 		}
+	}
+
+	private static int skipWhitespaceAtBeginning(String text, int begin, int end) {
+		while (begin < end && Character.isWhitespace(text.charAt(begin))) {
+			begin++;
+		}
+		return begin;
+	}
+
+	private static int skipWhitespaceAtEnd(String text, int begin, int end) {
+		while (begin < end && Character.isWhitespace(text.charAt(end - 1))) {
+			end--;
+		}
+		return end;
 	}
 
 }

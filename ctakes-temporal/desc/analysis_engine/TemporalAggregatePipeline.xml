@@ -791,7 +791,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -2367,7 +2367,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -3968,7 +3968,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -5544,7 +5544,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -7112,7 +7112,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                            <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -8688,7 +8688,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -10244,7 +10244,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                            <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -11820,7 +11820,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -13405,7 +13405,7 @@ More qualifying information on how the procedure was done.</description>
                                                     </typeDescription>
                                                     <typeDescription>
                                                         <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                                        <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                                        <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                                         <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                                         <features>
                                                             <featureDescription>
@@ -14981,7 +14981,7 @@ More qualifying information on how the procedure was done.</description>
                                                     </typeDescription>
                                                     <typeDescription>
                                                         <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                                        <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                                        <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                                         <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                                         <features>
                                                             <featureDescription>
@@ -16560,7 +16560,7 @@ More qualifying information on how the procedure was done.</description>
                                                     </typeDescription>
                                                     <typeDescription>
                                                         <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                                        <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                                        <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                                         <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                                         <features>
                                                             <featureDescription>
@@ -18136,7 +18136,7 @@ More qualifying information on how the procedure was done.</description>
                                                     </typeDescription>
                                                     <typeDescription>
                                                         <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                                        <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                                        <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                                         <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                                         <features>
                                                             <featureDescription>
@@ -19704,7 +19704,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                            <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -21280,7 +21280,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -22856,7 +22856,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                            <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -24432,7 +24432,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -26113,7 +26113,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                            <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -27689,7 +27689,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -29290,7 +29290,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                            <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -30866,7 +30866,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -32429,7 +32429,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                            <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -34005,7 +34005,7 @@ More qualifying information on how the procedure was done.</description>
                                         </typeDescription>
                                         <typeDescription>
                                             <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                            <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                             <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                             <features>
                                                 <featureDescription>
@@ -35660,7 +35660,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -37236,7 +37236,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -38784,7 +38784,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -40360,7 +40360,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -41968,7 +41968,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -43544,7 +43544,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -45121,7 +45121,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -46697,7 +46697,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -48257,7 +48257,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.refsem.SignSymptom</name>
-                                <description>This is an Event from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>This is an Event from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.refsem.Event</supertypeName>
                                 <features>
                                     <featureDescription>
@@ -49833,7 +49833,7 @@ More qualifying information on how the procedure was done.</description>
                             </typeDescription>
                             <typeDescription>
                                 <name>org.apache.ctakes.typesystem.type.textsem.SignSymptomMention</name>
-                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symtom.  Based on generic Clinical Element Models (CEMs)</description>
+                                <description>A text string that refers to a (SignSymptom) Event.  This is from the UMLS semantic group of Sign or Symptom.  Based on generic Clinical Element Models (CEMs)</description>
                                 <supertypeName>org.apache.ctakes.typesystem.type.textsem.EventMention</supertypeName>
                                 <features>
                                     <featureDescription>
