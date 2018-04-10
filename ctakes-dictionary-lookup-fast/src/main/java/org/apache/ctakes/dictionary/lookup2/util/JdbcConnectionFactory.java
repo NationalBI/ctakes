@@ -111,11 +111,13 @@ public enum JdbcConnectionFactory {
     */
    static private String resolveDatabasePath( final String jdbcUrl ) throws SQLException {
       final String urlDbPath = jdbcUrl.substring( HSQL_FILE_PREFIX.length() );
-      final String urlFilePath = urlDbPath + HSQL_DB_EXT;
+      final String[] pathAndProperties = urlDbPath.split( ";", 2 );
+      final String urlFilePath = pathAndProperties[0] + HSQL_DB_EXT;
       try {
          final URL url = FileLocator.getResource( urlFilePath );
          final String urlString = Paths.get(url.toURI()).toRealPath().toString();
-         return urlString.substring( 0, urlString.length() - HSQL_DB_EXT.length() );
+         pathAndProperties[0] = urlString.substring( 0, urlString.length() - HSQL_DB_EXT.length() );
+         return String.join( ";", pathAndProperties );
       } catch ( FileNotFoundException fnfE ) {
          throw new SQLException( "No Hsql DB exists at Url", fnfE );
       } catch ( IOException | URISyntaxException err ) {
