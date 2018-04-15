@@ -51,9 +51,19 @@ import java.nio.charset.Charset;
 import java.util.*;
 
 /**
- * Wraps the OpenNLP sentence detector in a UIMA annotator
+ * Wraps the OpenNLP sentence detector in a UIMA annotator.
+ *
+ * <p>Note that this class is intended to address the idiosyncrasies of
+ * clinical text, and the things it tags as "sentences" are more like
+ * phrases in English prose text.  In particular, it will terminate
+ * a sentences at a colon or semicolon (via EndOfSentenceScannerImpl)
+ * or at a newline.
+ *
+ * <p>If you need sentence detection that suits prose text, see the
+ * alternative mentioned below.
  * 
  * @author Mayo Clinic
+ * @see org.apache.ctakes.core.ae.SentenceDetectorAnnotatorBIO
  */
 @PipeBitInfo(
       name = "Sentence Detector",
