@@ -34,6 +34,23 @@ import org.cleartk.ml.jar.DirectoryDataWriterFactory;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
 import org.cleartk.util.ViewUriUtil;
 
+
+/**
+ * Prose sentence detector.
+ *
+ * <p>This sentence detector operates at the character level and splits a
+ * document into sentences using a trained model.  It notably differs
+ * from org.apache.ctakes.core.ae.SentenceDetector in that it allows
+ * colon, semicolon, and newline characters mid-sentence.
+ *
+ * <p>This sentence detector does sometimes lump lines together if they
+ * aren't prose, e.g. lines of text in a list.  See the cross-references
+ * for annotators that can help correct this.
+ *
+ * @see org.apache.ctakes.core.ae.ListSentenceFixer
+ * @see org.apache.ctakes.core.ae.ParagraphSentenceFixer
+ * @see org.apache.ctakes.core.ae.SentenceDetector
+ */
 public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
 
   private Logger logger = Logger.getLogger(SentenceDetectorAnnotatorBIO.class);
