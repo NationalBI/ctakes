@@ -151,23 +151,17 @@
 	</parent>
 
 	<modules>
-		<module>ctakes-gui</module>
-		<module>ctakes-gui-res</module>
 		<module>ctakes-utils</module>
 		<module>ctakes-core</module>
 		<module>ctakes-type-system</module>
 		<module>ctakes-pos-tagger</module>
 		<module>ctakes-chunker</module>
 		<module>ctakes-preprocessor</module>
-		<module>ctakes-dictionary-lookup</module>
 		<module>ctakes-context-tokenizer</module>
 		<module>ctakes-lvg</module>
 		<module>ctakes-ne-contexts</module>
 		<module>ctakes-constituency-parser</module>
 		<module>ctakes-coreference</module>
-		<module>ctakes-drug-ner</module>
-		<module>ctakes-side-effect</module>
-		<module>ctakes-smoking-status</module>
 		<module>ctakes-dependency-parser</module>
 		<module>ctakes-relation-extractor</module>
 		<module>ctakes-assertion</module>
@@ -175,31 +169,18 @@
 		<module>ctakes-temporal</module>
 		<module>ctakes-clinical-pipeline</module>
 		<module>ctakes-clinical-pipeline-res</module>
-		<module>ctakes-distribution</module>
-		<module>ctakes-regression-test</module>
 		<module>ctakes-assertion-res</module>
 		<module>ctakes-chunker-res</module>
 		<module>ctakes-constituency-parser-res</module>
 		<module>ctakes-core-res</module>
 		<module>ctakes-coreference-res</module>
 		<module>ctakes-dependency-parser-res</module>
-		<module>ctakes-dictionary-lookup-res</module>
 		<module>ctakes-lvg-res</module>
 		<module>ctakes-pos-tagger-res</module>
 		<module>ctakes-relation-extractor-res</module>
-		<module>ctakes-side-effect-res</module>
-		<module>ctakes-smoking-status-res</module>
 		<module>ctakes-temporal-res</module>
 		<module>ctakes-assertion-zoner-res</module>
-		<module>ctakes-drug-ner-res</module>
 		<module>ctakes-ne-contexts-res</module>
-		<module>ctakes-template-filler</module>
-		<module>ctakes-examples</module>
-		<module>ctakes-examples-res</module>
-		<module>ctakes-ytex-res</module>
-		<module>ctakes-ytex</module>
-		<module>ctakes-ytex-uima</module>
-		<module>ctakes-ytex-web</module>
 		<module>ctakes-dictionary-lookup-fast</module>
 		<module>ctakes-dictionary-lookup-fast-res</module>
 	</modules>
@@ -506,26 +487,6 @@
 			<!-- cTAKES module versions -->
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-gui</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-gui-res</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-examples</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-examples-res</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
 				<artifactId>ctakes-type-system</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -542,16 +503,6 @@
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
 				<artifactId>ctakes-core-res</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-dictionary-lookup</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-dictionary-lookup-res</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -689,48 +640,6 @@
 			<dependency>
 				<groupId>org.apache.ctakes</groupId>
 				<artifactId>
-					ctakes-drug-ner
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-drug-ner-res
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-side-effect
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-side-effect-res
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-smoking-status
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-smoking-status-res
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
 					ctakes-dependency-parser
 				</artifactId>
 				<version>${project.version}</version>
@@ -770,37 +679,6 @@
 				</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-ytex-res
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-ytex
-				</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-ytex-uima</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>ctakes-ytex-web</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.ctakes</groupId>
-				<artifactId>
-					ctakes-distribution
-                </artifactId>
-                <version>${project.version}</version>
-            </dependency>
 			<!-- cTAKES Resources -->
 			<dependency>
 				<groupId>net.sourceforge.ctakesresources</groupId>
@@ -983,16 +861,11 @@
 						    <additionalClasspathElement>ctakes-core-res/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-coreference-res/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-dependency-parser-res/src/main/resources</additionalClasspathElement>	
-						    <additionalClasspathElement>ctakes-dictionary-lookup-res/src/main/resources</additionalClasspathElement>
-						    <additionalClasspathElement>ctakes-drug-ner-res/src/main/resources</additionalClasspathElement>						    						    					    						    						    						    						    
 						    <additionalClasspathElement>ctakes-lvg-res/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-ne-contexts-res/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-pos-tagger-res/src/main/resources</additionalClasspathElement>						    
 						    <additionalClasspathElement>ctakes-relation-extractor-res/src/main/resources</additionalClasspathElement>
-						    <additionalClasspathElement>ctakes-side-effect-res/src/main/resources</additionalClasspathElement>
-						    <additionalClasspathElement>ctakes-smoking-status-res/src/main/resources</additionalClasspathElement>
 						    <additionalClasspathElement>ctakes-temporal-res/src/main/resources</additionalClasspathElement>						    						    						    						    						    						    						    
-							<additionalClasspathElement>ctakes-ytex-res/src/main/resources</additionalClasspathElement>
                      <additionalClasspathElement>ctakes-dictionary-lookup-fast-res/src/main/resources</additionalClasspathElement>
 						</additionalClasspathElements>
 					</configuration>
