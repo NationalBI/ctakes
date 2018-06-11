@@ -125,10 +125,14 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 	 */
 	private static Pattern buildPattern(String[] line) {
 		StringBuffer sb = new StringBuffer();
-		for (int i = 1; i < line.length; i++) {
+		// Column 0 is the section ID; column 1 is the corresponding CDA code.
+		// This annotator used to allow "<CDA code>:" or similar as a section
+		// header, but we're not making use of that, so we skip directly to
+		// column 2.
+		for (int i = 2; i < line.length; i++) {
 			// Build the RegEx pattern for each comma delimited header name
 			// Suffixed with a aggregator pipe
-			sb.append("\\s*" + line[i].trim() + "(\\s\\s|\\s:|:|\\s-|-)");
+			sb.append("[\\s\u2003]*" + line[i].trim() + "[ \t\u2003]*(?::[\\s\u2003]*|\r*\n)");
 			if (i != line.length - 1) {
 				sb.append("|");
 			}
