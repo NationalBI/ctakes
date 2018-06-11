@@ -67,6 +67,13 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 	    mandatory=false)
 	protected String sections_path;
 
+	public static final String PARAM_SECTION_END_MARKERS = "section_end_markers";
+	@ConfigurationParameter(name = PARAM_SECTION_END_MARKERS,
+			description = "List of strings that can terminate a section",
+			defaultValue = {},
+			mandatory = false)
+	protected LinkedList<String> section_end_markers = new LinkedList<>();
+
 	/**
 	 * Init and load the sections mapping file and precompile the regex matches
 	 * into a hashmap
@@ -193,10 +200,11 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 				// Pull the section ends inwards to avoid any whitespace at either end.
 				// This means that we'll just be tagging the actual text that we care about
 				// and not the separating whitespace.
+				// For the end of the body, also pull that in to avoid any of the section_end_markers.
 				sectionHeadingBegin = skipWhitespaceAtBeginning(text, sectionHeadingBegin, sectionHeadingEnd);
 				sectionHeadingEnd = skipWhitespaceAtEnd(text, sectionHeadingBegin, sectionHeadingEnd);
 				sectionBodyBegin = skipWhitespaceAtBeginning(text, sectionBodyBegin, sectionBodyEnd);
-				sectionBodyEnd = skipWhitespaceAtEnd(text, sectionBodyBegin, sectionBodyEnd);
+				sectionBodyEnd = findTrueSectionEnd(text, sectionBodyBegin, sectionBodyEnd);
 
 				// Only create a segment if there is some text.
 				// Simply skip empty sections.
@@ -238,4 +246,24 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 		return end;
 	}
 
+	private int findTrueSectionEnd(String text, int begin, int end) {
+		while (true) {
+			int newEnd = findSectionEndMarker(text, begin, end);
+			if (newEnd == -1) {
+				return skipWhitespaceAtEnd(text, begin, end);
+			}
+			end = newEnd;
+		}
+	}
+
+	private int findSectionEndMarker(String text, int begin, int end) {
+		String sectionText = text.substring(begin, end);
+		for (String indicator : section_end_markers) {
+			int idx = sectionText.indexOf(indicator);
+			if (idx != -1) {
+				return begin + idx;
+			}
+		}
+		return -1;
+	}
 }
