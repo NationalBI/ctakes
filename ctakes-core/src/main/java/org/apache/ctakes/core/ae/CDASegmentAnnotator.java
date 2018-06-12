@@ -210,27 +210,36 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 				sectionBodyBegin = skipWhitespaceAtBeginning(text, sectionBodyBegin, sectionBodyEnd);
 				sectionBodyEnd = findTrueSectionEnd(text, sectionBodyBegin, sectionBodyEnd);
 
-				// Only create a segment if there is some text.
-				// Simply skip empty sections.
-				if (sectionBodyEnd > sectionBodyBegin + 1) {
-					String sId = s.getId();
-					String preferredText = section_names.get(sId);
-
-					Segment segment = new Segment(jCas);
-					segment.setBegin(sectionBodyBegin);
-					segment.setEnd(sectionBodyEnd);
-					segment.setId(sId);
-					segment.setPreferredText(preferredText);
-					segment.addToIndexes();
-
-					SectionHeading heading = new SectionHeading(jCas);
-					heading.setBegin(sectionHeadingBegin);
-					heading.setEnd(sectionHeadingEnd);
-					heading.setId(sId);
-					heading.setPreferredText(preferredText);
-					heading.addToIndexes();
-
+				if (sectionBodyEnd < sectionBodyBegin + 1) {
+					// Sanity-check the body end.
+					//
+					// We used to skip blank sections at this point (i.e. discard this segment entirely)
+					// but if we do that and the document has multilevel headings (e.g. the equivalent
+					// of <h1>Heading</h1><h2>Subheading</h2>) then we would skip the first heading because
+					// there is no text between the </h1> and the <h2>.  This annotator cannot detect
+					// multilevel headings like this, since it has no font/position info, so the
+					// best we can do is include the <h1> as a blank section, and maybe the caller can
+					// infer the structure later on.
+					sectionBodyEnd = sectionBodyBegin + 1;
 				}
+
+				String sId = s.getId();
+				String preferredText = section_names.get(sId);
+
+				Segment segment = new Segment(jCas);
+				segment.setBegin(sectionBodyBegin);
+				segment.setEnd(sectionBodyEnd);
+				segment.setId(sId);
+				segment.setPreferredText(preferredText);
+				segment.addToIndexes();
+
+				SectionHeading heading = new SectionHeading(jCas);
+				heading.setBegin(sectionHeadingBegin);
+				heading.setEnd(sectionHeadingEnd);
+				heading.setId(sId);
+				heading.setPreferredText(preferredText);
+				heading.addToIndexes();
+
 				index++;
 			}
 		}
