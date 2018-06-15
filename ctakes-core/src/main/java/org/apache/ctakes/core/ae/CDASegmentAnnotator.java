@@ -156,6 +156,7 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
 		String text = jCas.getDocumentText();
+		int textLength = text.length();
 		if (text == null) {
 			String docId = DocumentIDAnnotationUtil.getDocumentID(jCas);
 			logger.info("text is null for docId=" + docId);
@@ -174,7 +175,7 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 			// If there are no segments, create a simple one that spans the
 			// entire doc, and return.
 			if (sorted_segments.size() <= 0) {
-				Segment header = createSegment(jCas, 0, text.length(), SIMPLE_SEGMENT);
+				Segment header = createSegment(jCas, 0, textLength, SIMPLE_SEGMENT);
 				header.addToIndexes();
 				return;
 			}
@@ -197,8 +198,7 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 					sectionBodyEnd = sorted_segments.get(index + 1).getBegin();
 				}
 				else {
-					// handle case for last section
-					sectionBodyEnd = text.length();
+					sectionBodyEnd = textLength;
 				}
 
 				// Pull the section ends inwards to avoid any whitespace at either end.
@@ -226,10 +226,7 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 				String sId = s.getId();
 				String preferredText = section_names.get(sId);
 
-				Segment segment = new Segment(jCas);
-				segment.setBegin(sectionBodyBegin);
-				segment.setEnd(sectionBodyEnd);
-				segment.setId(sId);
+				Segment segment = createSegment(jCas, sectionBodyBegin, sectionBodyEnd, sId);
 				segment.setPreferredText(preferredText);
 				segment.addToIndexes();
 
