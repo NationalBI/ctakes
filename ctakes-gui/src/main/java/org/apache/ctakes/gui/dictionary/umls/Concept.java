@@ -16,7 +16,6 @@ final public class Concept {
    static public final String PREFERRED_TERM_UNKNOWN = "Unknown Preferred Term";
 
    private String _preferredText = null;
-   private boolean _hasDose = false;
 
    final private Map<String, Integer> _textCounts;
    final private HashSetMap<String, String> _codes;
