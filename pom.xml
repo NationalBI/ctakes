@@ -171,6 +171,7 @@
 		<module>ctakes-temporal</module>
 		<module>ctakes-clinical-pipeline</module>
 		<module>ctakes-clinical-pipeline-res</module>
+		<module>ctakes-distribution</module>
 		<module>ctakes-assertion-res</module>
 		<module>ctakes-chunker-res</module>
 		<module>ctakes-constituency-parser-res</module>
@@ -691,6 +692,13 @@
 				</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+                       <dependency>
+                               <groupId>org.apache.ctakes</groupId>
+                               <artifactId>
+                                       ctakes-distribution
+                </artifactId>
+                <version>${project.version}</version>
+            </dependency>
 			<!-- cTAKES Resources -->
 			<dependency>
 				<groupId>net.sourceforge.ctakesresources</groupId>

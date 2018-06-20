@@ -48,18 +48,10 @@
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-context-tokenizer</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-dictionary-lookup</artifactId>
-		</dependency>
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-dictionary-lookup-fast</artifactId>
       </dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-examples</artifactId>
-		</dependency>
       <dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-preprocessor</artifactId>
@@ -102,38 +94,12 @@
 		</dependency>			
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-drug-ner</artifactId>
-		</dependency>	
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-relation-extractor</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-side-effect</artifactId>
-		</dependency>		
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-smoking-status</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ctakes</groupId>
 			<artifactId>ctakes-temporal</artifactId>
 		</dependency>									
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-ytex</artifactId>
-		</dependency>						
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-ytex-uima</artifactId>
-		</dependency>						
-		<dependency>
-			<groupId>org.apache.ctakes</groupId>
-			<artifactId>ctakes-ytex-web</artifactId>
-			<version>${project.version}</version>
-			<classifier>classes</classifier>
-		</dependency>
       <dependency>
          <groupId>org.apache.ctakes</groupId>
          <artifactId>ctakes-gui</artifactId>
