@@ -37,6 +37,7 @@ final class MainPanel extends JPanel {
 
    private String _umlsDirPath = System.getProperty( "user.dir" );
    private String _ctakesPath = System.getProperty( "user.dir" );
+   private final JTextField _termProcessingMode = new JTextField( "tiny" );
    private final TuiTableModel _tuiModel = new TuiTableModel();
    private final SourceTableModel _sourceModel = new SourceTableModel();
    private final LanguageTableModel _languageModel = new LanguageTableModel();
@@ -96,6 +97,28 @@ final class MainPanel extends JPanel {
    }
 
    private JComponent createGoPanel() {
+      final JComponent panel = new JPanel( new GridLayout( 2, 1 ) );
+      panel.add( createTermProcessingPanel() );
+      panel.add( createDictionaryNamePanel() );
+      return panel;
+   }
+
+   private JComponent createTermProcessingPanel() {
+      final JLabel label = new JLabel("Term processing:");
+      label.setPreferredSize(new Dimension(100, 0));
+      label.setHorizontalAlignment(SwingConstants.TRAILING);
+
+      _termProcessingMode.setPreferredSize(new Dimension(100, 0));
+
+      final JPanel result = new JPanel(new BorderLayout(10, 10));
+      result.setBorder(new EmptyBorder(2, 10, 2, 10));
+      result.add(label, BorderLayout.WEST);
+      result.add(_termProcessingMode, BorderLayout.CENTER);
+
+      return result;
+   }
+
+   private JComponent createDictionaryNamePanel() {
       final JPanel panel = new JPanel( new BorderLayout( 10, 10 ) );
       panel.setBorder( new EmptyBorder( 2, 10, 2, 10 ) );
       final JLabel label = new JLabel( "Dictionary Name:" );
@@ -176,7 +199,8 @@ final class MainPanel extends JPanel {
 
    private void buildDictionary( final String dictionaryName ) {
       final ExecutorService executor = Executors.newSingleThreadExecutor();
-      executor.execute( new DictionaryBuildRunner( _umlsDirPath, _ctakesPath, dictionaryName, _sourceModel
+      String termProcessingMode = _termProcessingMode.getText();
+      executor.execute( new DictionaryBuildRunner( _umlsDirPath, _ctakesPath, dictionaryName, termProcessingMode, _sourceModel
             .getWantedSources(),
             _sourceModel.getWantedTargets(), _tuiModel.getWantedTuis(), _languageModel.getWantedLanguages() ) );
    }
@@ -191,18 +215,21 @@ final class MainPanel extends JPanel {
       private final String __umlsDirPath;
       private final String __ctakesDirPath;
       private final String __dictionaryName;
+      private final String __termProcessingMode;
       private final Collection<String> __wantedSources;
       private final Collection<String> __wantedTargets;
       private final Collection<Tui> __wantedTuis;
       private final Collection<String> __wantedLanguages;
 
       private DictionaryBuildRunner( final String umlsDirPath, final String ctakesDirPath, final String dictionaryName,
+                                     final String termProcessingMode,
                                      final Collection<String> wantedSources,
                                      final Collection<String> wantedTargets,
                                      final Collection<Tui> wantedTuis, final Collection<String> wantedLangauges ) {
          __umlsDirPath = umlsDirPath;
          __ctakesDirPath = ctakesDirPath;
          __dictionaryName = dictionaryName;
+         __termProcessingMode = termProcessingMode;
          __wantedSources = wantedSources;
          __wantedTargets = new ArrayList<>( wantedTargets );
          __wantedTuis = new ArrayList<>( wantedTuis );
@@ -214,6 +241,7 @@ final class MainPanel extends JPanel {
          SwingUtilities.getRoot( MainPanel.this ).setCursor( Cursor.getPredefinedCursor( Cursor.WAIT_CURSOR ) );
          DisablerPane.getInstance().setVisible( true );
          if ( DictionaryBuilder.buildDictionary( __umlsDirPath, __ctakesDirPath, __dictionaryName,
+               __termProcessingMode,
 //               Collections.singletonList( "ENG" ),
                __wantedLanguages,
                __wantedSources, __wantedTargets, __wantedTuis ) ) {

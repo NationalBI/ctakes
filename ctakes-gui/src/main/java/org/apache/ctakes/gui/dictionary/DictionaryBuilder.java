@@ -23,7 +23,7 @@ final class DictionaryBuilder {
 
    static private final Logger LOGGER = Logger.getLogger( "DictionaryBuilder" );
 
-   static private final String DEFAULT_DATA_DIR = "org/apache/ctakes/gui/dictionary/data/tiny";
+   static private final String DEFAULT_DATA_ROOT = "org/apache/ctakes/gui/dictionary/data";
    static public final String CTAKES_APP_DB_PATH = "resources/org/apache/ctakes/dictionary/lookup/fast";
    static private final String CTAKES_RES_MODULE = "ctakes-dictionary-lookup-fast-res";
    static private final String CTAKES_RES_DB_PATH = CTAKES_RES_MODULE + "/src/main/" + CTAKES_APP_DB_PATH;
@@ -42,12 +42,14 @@ final class DictionaryBuilder {
    static boolean buildDictionary( final String umlsDirPath,
                                    final String ctakesDirPath,
                                    final String dictionaryName,
+                                   final String termProcessingMode,
                                    final Collection<String> wantedLanguages,
                                    final Collection<String> wantedSources,
                                    final Collection<String> wantedTargets,
                                    final Collection<Tui> wantedTuis ) {
       // Set up the term utility
-      final UmlsTermUtil umlsTermUtil = new UmlsTermUtil( DEFAULT_DATA_DIR );
+      final String dataDir = DEFAULT_DATA_ROOT + "/" + termProcessingMode;
+      final UmlsTermUtil umlsTermUtil = new UmlsTermUtil( dataDir );
       final Map<Long, Concept> conceptMap
             = parseAll( umlsTermUtil, umlsDirPath, wantedLanguages, wantedSources, wantedTargets, wantedTuis );
       return writeDatabase( ctakesDirPath, dictionaryName, conceptMap );

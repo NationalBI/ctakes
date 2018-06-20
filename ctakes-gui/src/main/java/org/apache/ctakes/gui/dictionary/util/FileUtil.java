@@ -52,22 +52,11 @@ final public class FileUtil {
    }
 
 
-   static public BufferedReader createReader( final String filePath ) {
+   static public BufferedReader createReader( final String filePath ) throws IOException {
 //      final String formattedPath = parseDirText( filePath );
 //      final File file = new File( formattedPath );
-      try {
-         final File file = FileLocator.getFile( filePath );
-         if ( !file.canRead() ) {
-            LOGGER.error( "Cannot read file " + filePath );
-            System.exit( 1 );
-         }
-         return new BufferedReader( new FileReader( file ) );
-      } catch ( IOException ioE ) {
-         LOGGER.error( "Cannot create Reader for " + filePath );
-         LOGGER.error( ioE.getMessage() );
-         System.exit( 1 );
-      }
-      return null;
+      final File file = FileLocator.getFile( filePath );
+      return new BufferedReader( new FileReader( file ) );
    }
 
    static private BufferedWriter createWriter( final String filePath ) {
