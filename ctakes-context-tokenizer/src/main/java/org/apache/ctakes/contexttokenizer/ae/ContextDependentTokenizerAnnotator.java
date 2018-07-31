@@ -52,15 +52,15 @@ import java.util.*;
 )
 public class ContextDependentTokenizerAnnotator extends JCasAnnotator_ImplBase {
 	// LOG4J logger based on class name
-	private Logger iv_logger = Logger.getLogger(getClass().getName());
+	protected Logger iv_logger = Logger.getLogger(getClass().getName());
 
-	private DateFSM iv_dateFSM;
-	private TimeFSM iv_timeFSM;
-	private FractionFSM iv_fractionFSM;
-	private RomanNumeralFSM iv_romanNumeralFSM;
-	private RangeFSM iv_rangeFSM;
-	private MeasurementFSM iv_measurementFSM;
-	private PersonTitleFSM iv_personTitleFSM;
+	protected DateFSM iv_dateFSM;
+	protected TimeFSM iv_timeFSM;
+	protected FractionFSM iv_fractionFSM;
+	protected RomanNumeralFSM iv_romanNumeralFSM;
+	protected RangeFSM iv_rangeFSM;
+	protected MeasurementFSM iv_measurementFSM;
+	protected PersonTitleFSM iv_personTitleFSM;
 
 	@Override
   public void initialize(UimaContext annotCtx) throws ResourceInitializationException {
@@ -106,7 +106,7 @@ public class ContextDependentTokenizerAnnotator extends JCasAnnotator_ImplBase {
 		}
 	}
 
-	private void executeFSMs(JCas jcas, List<? extends BaseToken> baseTokenList) throws AnalysisEngineProcessException {
+	protected void executeFSMs(JCas jcas, List<? extends BaseToken> baseTokenList) throws AnalysisEngineProcessException {
 		try {
 			Set<DateToken> dateTokenSet = iv_dateFSM.execute(baseTokenList);
 			Iterator<DateToken> dateTokenItr = dateTokenSet.iterator();
@@ -175,7 +175,7 @@ public class ContextDependentTokenizerAnnotator extends JCasAnnotator_ImplBase {
 	 * @param obj
 	 * @return
 	 */
-	private static BaseToken adaptToBaseToken(org.apache.ctakes.typesystem.type.syntax.BaseToken obj) throws Exception {
+	protected static BaseToken adaptToBaseToken(org.apache.ctakes.typesystem.type.syntax.BaseToken obj) throws Exception {
 		if (obj instanceof WordToken) {
 			WordToken wta = (WordToken) obj;
 			return new WordTokenAdapter(wta);

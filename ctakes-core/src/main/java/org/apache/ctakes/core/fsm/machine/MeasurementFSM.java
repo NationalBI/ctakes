@@ -47,9 +47,9 @@ import net.openai.util.fsm.State;
  */
 public class MeasurementFSM {
 	// text fractions
-	Set<String> iv_fullTextSet = new HashSet<String>();
-	Set<String> iv_shortTextSet = new HashSet<String>();
-	Set<String> iv_textNumberSet = new HashSet<String>();
+	public Set<String> iv_fullTextSet = new HashSet<String>();
+	public Set<String> iv_shortTextSet = new HashSet<String>();
+	public Set<String> iv_textNumberSet = new HashSet<String>();
 
 	// contains the finite state machines
 	private Set<Machine> iv_machineSet = new HashSet<Machine>();
