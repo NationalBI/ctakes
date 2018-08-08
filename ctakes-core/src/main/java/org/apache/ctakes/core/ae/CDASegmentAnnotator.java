@@ -196,6 +196,15 @@ public class CDASegmentAnnotator extends JCasAnnotator_ImplBase {
 				int sectionBodyEnd;
 				if (index < sorted_segments_size - 1) {
 					sectionBodyEnd = sorted_segments.get(index + 1).getBegin();
+					if (sectionBodyBegin > sectionBodyEnd) {
+						// This can happen if the two section headings
+						// overlap, e.g. if the regexes include whitespace and
+						// we've got two headings next to each other with some
+						// whitespace between.  Cap the sectionBodyBegin so
+						// that the code below doesn't barf, but this is going
+						// to all fall through and result in an empty section.
+						sectionBodyBegin = sectionBodyEnd;
+					}
 				}
 				else {
 					sectionBodyEnd = textLength;
