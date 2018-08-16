@@ -209,6 +209,24 @@ Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.PunctuationToken</description>
       <supertypeName>org.apache.ctakes.typesystem.type.syntax.BaseToken</supertypeName>
     </typeDescription>
     <typeDescription>
+      <name>org.apache.ctakes.typesystem.type.textspan.SectionHeading</name>
+      <description>The heading of a section. This is populated by CDASegmentAnnotator along with the corresponding org.apache.ctakes.typesystem.type.textspan.Segment.
+In other words, the Segment covers the entire section, and the SectionHeading covers just the heading (usually the first line).</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>id</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>preferredText</name>
+          <description>preferredText is the normalized/resolved section name.  Normally, this is populated by the Sectionizer and would contain the HL7/CCDA section name.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
       <name>org.apache.ctakes.typesystem.type.textspan.Segment</name>
       <description>A section of a clinical text, e.g., Diagnosis, Current Medications, Problem List.  Different segments often have differing sublanguages and clinical relevance.     
 Equivalent to cTAKES: edu.mayo.bmi.uima.core.type.Segment</description>

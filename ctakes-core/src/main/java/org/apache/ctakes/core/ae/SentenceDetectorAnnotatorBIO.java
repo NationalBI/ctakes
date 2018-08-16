@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import javafx.util.Pair;
 
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
@@ -112,6 +113,10 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
       // Iterate over every character in the Segment and classify it as Begin, Inside, or Outside a Sentence
       String prevOutcome = "O";
       String segText = seg.getCoveredText();
+      String prevToken = null;
+      String nextToken = "";
+      Collection<? extends Feature> currentTokenFeatures = null;
+      int nextTokenBoundary = 0;
       for(int ind = 0; ind < segText.length(); ind++){
         List<Feature> feats = new ArrayList<>();
         
@@ -132,10 +137,15 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
           }
         }
         
-        
-        String nextToken = getNextToken(segText, ind);
-        String prevToken = getPrevToken(segText, ind);
-        feats.addAll(getTokenFeatures(prevToken, nextToken, "Token")); 
+
+        if (ind >= nextTokenBoundary) {
+          prevToken = nextToken;
+          Pair<String, Integer> nextTokenPair = getNextToken(segText, ind);
+          nextToken = nextTokenPair.getKey();
+          nextTokenBoundary = nextTokenPair.getValue();
+          currentTokenFeatures = getTokenFeatures(prevToken, nextToken, "Token");
+        }
+        feats.addAll(currentTokenFeatures);
 
         if(featConfig == FEAT_CONFIG.LINE_POS || featConfig == FEAT_CONFIG.CHAR_POS || featConfig == FEAT_CONFIG.CHAR_SHAPE_POS){
           feats.addAll(getPositionFeatures(curChar, ind, segText, nextToken));
@@ -256,7 +266,7 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
     }
   }
   
-  private static String getNextToken(String segText, int ind) {
+  private static Pair<String, Integer> getNextToken(String segText, int ind) {
     int startInd = ind;
     
     // move startInd right if it's whitespace and left if it's not.
@@ -272,29 +282,9 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
       endInd++;
     }
     
-    return segText.substring(startInd, endInd);    
+    return new Pair(segText.substring(startInd, endInd), endInd);
   }
   
-  private static String getPrevToken(String segText, int ind){
-    int endInd = ind;
-    
-    // move endInd left until we hit whitespace:
-    while(endInd > 0 && !Character.isWhitespace(segText.charAt(endInd))){
-      endInd--;
-    }
-    // then move until the character to the left is whitespace
-    while(endInd > 0 && Character.isWhitespace(segText.charAt(endInd))){
-      endInd--;
-    }
-    
-    int startInd = endInd;
-    while(startInd > 0 && !Character.isWhitespace(segText.charAt(startInd)) && !Character.isWhitespace(segText.charAt(startInd-1))){
-      startInd--;
-    }
-    
-    return segText.substring(startInd, endInd+1);
-  }
-
   static CharacterCategoryPatternFunction<Annotation> shapeFun = new CharacterCategoryPatternFunction<>(PatternType.REPEATS_AS_KLEENE_PLUS);
   
   private Collection<? extends Feature> getTokenFeatures(String prevToken, String nextToken, String prefix) {
