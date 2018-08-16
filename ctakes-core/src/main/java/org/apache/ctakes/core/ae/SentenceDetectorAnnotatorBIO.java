@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-import javafx.util.Pair;
 
 import org.apache.ctakes.core.resource.FileLocator;
 import org.apache.ctakes.typesystem.type.textspan.Segment;
@@ -140,9 +139,9 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
 
         if (ind >= nextTokenBoundary) {
           prevToken = nextToken;
-          Pair<String, Integer> nextTokenPair = getNextToken(segText, ind);
-          nextToken = nextTokenPair.getKey();
-          nextTokenBoundary = nextTokenPair.getValue();
+          Object[] nextTokenPair = getNextToken(segText, ind);
+          nextToken = (String)nextTokenPair[0];
+          nextTokenBoundary = (Integer)nextTokenPair[1];
           currentTokenFeatures = getTokenFeatures(prevToken, nextToken, "Token");
         }
         feats.addAll(currentTokenFeatures);
@@ -266,7 +265,7 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
     }
   }
   
-  private static Pair<String, Integer> getNextToken(String segText, int ind) {
+  private static Object[] getNextToken(String segText, int ind) {
     int startInd = ind;
     
     // move startInd right if it's whitespace and left if it's not.
@@ -282,7 +281,7 @@ public class SentenceDetectorAnnotatorBIO extends CleartkAnnotator<String>{
       endInd++;
     }
     
-    return new Pair(segText.substring(startInd, endInd), endInd);
+    return new Object[] { segText.substring(startInd, endInd), endInd };
   }
   
   static CharacterCategoryPatternFunction<Annotation> shapeFun = new CharacterCategoryPatternFunction<>(PatternType.REPEATS_AS_KLEENE_PLUS);
